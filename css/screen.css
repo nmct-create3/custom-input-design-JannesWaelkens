@@ -877,6 +877,28 @@ li + li {
 
 */
 
+.c-custom-select{
+    display: block;
+    position: relative;
+    
+    
+}
+
+
+.c-custom-select__symbol{
+    position: absolute;
+    right: 12px;
+    top: 12px;
+
+    pointer-events: none;
+
+
+    width: 24px;
+    width: 24px;
+    fill: var(--color-neutral-x-light);
+
+}
+
 
 
 
