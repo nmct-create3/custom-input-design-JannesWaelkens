@@ -43,6 +43,7 @@
     --color-neutral-xx-dark: #4b4c60;
     --color-neutral-xxx-dark: #35374d;
     --color-neutral-xxxx-dark: #20223a;
+    --global-color-alpha-x-transparent: rgba(51, 133, 255, .2);
 
     /* Shadows */
     --shadow-color: #20223a15;
@@ -796,6 +797,88 @@ li + li {
     border-color: var(--color-alpha-x-light);
     box-shadow: var(--global-input-boxShadow--focus);
 }
+
+
+.c-custom-toggle {
+    --toggle-translateX:0;
+    --toggle-borderColor:var(--color-neutral-xxx-light) ; 
+    --toggle-backgroundColor: var(--color-neutral-xxx-light) ; 
+
+    --toggle-boxShadow: 0 0 0 0 ; /* lege standard box*shadow*/
+    --toggle-boxShadowColor: var(--global-color-alpha-x-transparent) ; 
+    display: flex;
+    align-items: center;
+    
+
+}
+
+.c-custom-toggle__fake-input{
+    display: block;
+    width: 48px;
+    height: 24px;
+
+    border: 1px solid var(--toggle-borderColor);
+    background: var(--toggle-backgroundColor);
+    border-radius: 24px;
+    margin-right: 16px;
+    transition: all 200ms ease-out; 
+}
+
+.c-custom-toggle__fake-input::after{
+    content: ''; /* verplicht*/
+    display: block;
+
+    width: 22px; /*24px van parent onderaan -1px en bovenaan ook -1 */
+    height: 22px; /*24px van parent onderaan -1px en bovenaan ook -1 */
+
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px (0,0,0, 0.16);
+    transform: translateX( var(--toggle-translateX));
+
+    will-change: transform; /* puur voor performance*/
+    transition: transform 200ms ease-out; 
+
+}
+
+/*.c-option--hidden:checked + .c-custom-toggle .c-custom-toggle__fake-input::after {
+    transform: translateX(24px);
+}*/
+
+.c-option--hidden:checked + .c-custom-toggle  {
+    --toggle-translateX:24px; /*de after zal aanpassen want die volgt */
+    --toggle-borderColor:var(--color-alpha-dark) ; 
+    --toggle-backgroundColor: var(--color-alpha) ; 
+
+    --toggle-boxShadow: 0 0 0 0 ; /* lege standard box*shadow*/
+    
+}
+
+.c-custom-toggle--inverted {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.c-custom-toggle--inverted .c-custom-toggle__fake-input{
+    margin-right: 0;
+}
+
+/* has error
+.c-option--hidden.has. + .c-custom-toggle {
+    --toggle-translateX:24px; /*de after zal aanpassen want die volgt 
+    --toggle-borderColor:var(--color-alpha-dark) ; 
+    --toggle-backgroundColor: var(--color-alpha) ; 
+
+    --toggle-boxShadow: 0 0 0 0 ; /* lege standard box*shadow*/
+  /*  
+} 
+/*
+
+*/
+
+
+
 
 
 /*------------------------------------*\
