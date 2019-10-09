@@ -74,6 +74,7 @@
     Global page styles + universal box-sizing:
 */
 
+
 html {
     font-size: 16px;
     line-height: 1.5;
@@ -83,6 +84,31 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--color-neutral-xxxx-light);
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: var(--color-neutral-xxxx-dark);
+    }
+}
+
+:root {
+    --global-page-color: var(--color-neutral-xxxx-dark);
+    --global-page-backgroundColor: var(--color-neutral-xxxx-light);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --global-page-color: White;
+        --global-page-backgroundColor: var(--color-neutral-xxxx-dark);
+    }
+}
+
+
+
+html {
+    color: var(--global-page-color); 
+    background-color: var(--global-page-backgroundColor);
 }
 
 *,
@@ -537,16 +563,16 @@ input::placeholder {
 }
 
 .c-logo__path--1 {
-    fill: var(--color-neutral-xxxx-dark);
-}
-
-.c-logo__path--2 {
-    fill: var(--color-alpha);
-}
-
-.c-logo__path--3 {
-    fill: var(--color-alpha-x-dark);
-}
+    fill: var(--logo__path--1--fill, var(--global-color-neutral-xxxx-dark));
+  }
+  
+  .c-logo__path--2 {
+    fill: var(--logo__path--2--fill, var(--global-color-alpha));
+  }
+  
+  .c-logo__path--3 {
+    fill: var(--logo__path--3--fill, var(--global-color-alpha-x-dark));
+  }
 
 /* Light logo alternative */
 
@@ -554,6 +580,14 @@ input::placeholder {
     fill: white;
 }
 
+
+@media (prefers-color-scheme: dark) {
+    .c-logo {
+      --logo__path--1--fill: White;
+      --logo__path--2--fill: var(--logo__path--1--fill);
+      --logo__path--3--fill: var(--logo__path--1--fill);
+    }
+  }
 /*
     Component: Card
     ---
@@ -578,8 +612,19 @@ input::placeholder {
 .c-card__footer {
     text-align: center;
     border-top: 1px solid var(--color-neutral-xxx-light);
-    background-color: var(--color-neutral-xxxx-light);
+    background-color: var(--footer__path--1--fill, var(--global-color-neutral-xxxx-dark));
 }
+
+
+@media (prefers-color-scheme: dark) {
+    .c-card__footer {
+      --footer__path--1--fill: #35374D;
+      border-top:1px solid #20223A;
+    }
+  }
+
+
+
 
 .c-card__title {
     text-align: center;
@@ -597,6 +642,17 @@ input::placeholder {
         margin-bottom: 48px;
     }
 }
+
+.c-card__body {
+    background-color: var(--body__path--1--fill, var(--global-color-neutral-xxxx-dark));
+      
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-card__body {
+      --body__path--1--fill: #35374D;
+    }
+  }
 
 /*
     Component: Forms
@@ -623,10 +679,11 @@ input::placeholder {
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    border: 1px solid var(--color-neutral-xxx-light);
+    border: 1px solid var(--input__path--0--border, var(--color-neutral-xxx-light));
     border-radius: var(--radius);
-    color: var(--color-neutral-xxxx-dark);
-    background-color: #fff;
+    color: var(--input__font,var(--color-neutral-xxxx-dark));
+    
+    background-color:var(--input__path--1--fill, var(--global-color-neutral-xxxx-dark));;
     font-family: inherit;
     font-size: 16px;
     line-height: 24px;
@@ -636,14 +693,21 @@ input::placeholder {
     transition: border var(--transition-alpha);
 }
 
+
+
+
+
+
+
+
 .c-input:hover {
-    border-color: var(--color-neutral-xx-light);
+    border-color: var(--input__path--1--border,var(--color-alpha-xx-light) );
 }
 
 .c-input:focus,
 .c-input:active {
-    border-color: var(--color-alpha-x-light);
-    box-shadow: 0 0 0 3px var(--color-alpha-xx-light);
+    border-color: var(--input__path--1--border), var(--color-alpha-x-light, );
+    box-shadow: 0 0 0 3px var(--input__path--1--border,var(--color-alpha-xx-light));
 }
 
 /* option input for checkboxes and radio buttons */
@@ -651,6 +715,15 @@ input::placeholder {
 .c-input-option {
     margin-right: 8px;
 }
+
+@media (prefers-color-scheme: dark) {
+    .c-input {
+      --input__path--1--fill: #20223A;
+      --input__path--0--border: #20223A;
+      --input__path--1--border: #3385FF;
+      --input__font: white;
+    }
+  }
 
 /*
     Component: Label
@@ -709,6 +782,8 @@ input::placeholder {
     ---
 
 */
+
+
 
 .c-option-list {
 
