@@ -61,7 +61,10 @@
 	--global-input-borderColor: var(--global-color-neutral-xxx-light);
 	--global-input-hover-borderColor: var(--global-color-neutral-xx-light);
 	--global-input-focus-borderColor: var(--global-color-alpha);
-	--global-input-boxShadow--focus: 0 0 0 3px #3385FF;
+    --global-input-boxShadow--focus: 0 0 0 3px #3385FF;
+    
+    /*errorstate*/
+    --global-error-color: #F33;
 }
 
 /*------------------------------------*\
